@@ -11,7 +11,7 @@ import(
 
 // SearchIssues queries the github issue tracker
 func SearchIssues(terms []string) (*IssuesSearchResult, error) {
-   q := url.QueryEscape(strigns.Join(terms, " "))
+   q := url.QueryEscape(strings.Join(terms, " "))
    req, err := http.NewRequest("GET", IssuesURL +"?q="+q, nil)
    if err != nil {
       return nil, err
@@ -34,6 +34,6 @@ func SearchIssues(terms []string) (*IssuesSearchResult, error) {
   }
 
    resp.Body.Close()
-
-} 
+   return &result, nil
+}
 
